@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 
+
 @layer base {
   body {
     @apply font-barlow text-primary;
@@ -26,3 +27,4 @@
     @layer flex justify-between items-center bg-cyan-50 rounded-md absolute top-2 left-2 p-2 min-w[25%];
   }
 }
+

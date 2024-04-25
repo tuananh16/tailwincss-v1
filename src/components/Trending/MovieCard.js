@@ -1,21 +1,38 @@
-import { BiTime } from 'react-icons/bi';
-import  MoviesData  from './MovieData.js';
+import { BiTime } from "react-icons/bi";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
-const MovieCard = ({ movieIndex }) => {
-	const { src, title, main, runtime } = MoviesData[movieIndex]
-	return (
-		<div className='card'>
-			<img src={src} className='w-full' />
-			<div className='p-4 text-white'>
-				<h4>{title}</h4>
-				<p>{main}</p>
-			</div>
-			<div className='badge'>
-				<BiTime />
-				<p>{runtime}</p>
-			</div>
-		</div>
-	)
-}
+const MovieCard = ({ movie }) => {
+  const { name, slug, poster_url, year } = movie;
 
-export default MovieCard
+  return (
+    <Link to={`/phim/${slug}`}>
+      <div className="card ml-1 mr-1">
+        <div
+          style={{
+            position: "relative",
+            width: "100%",
+            height: "300px",
+            overflow: "hidden",
+          }}
+        >
+          <img
+            src={poster_url}
+            style={{ width: "100%", height: "100%", objectFit: "cover" }}
+            alt={name}
+          />
+        </div>
+        <div className="p-4 text-white">
+          <h4 className="movie-title truncate">{name}</h4>
+          <p className="movie-title truncate">{slug}</p>
+        </div>
+        <div className="badge flex justify-end items-center text-white p-2">
+          <BiTime />
+          <p className="ml-2">{year}</p>
+        </div>
+      </div>
+    </Link>
+  );
+};
+
+export default MovieCard;
